@@ -1,0 +1,52 @@
+{
+  "general": {
+    "rng_seed": 1234,
+    "sim_time_s": 1000,
+    "output_pcap_dir": "./pcaps/",
+    "pcap_max_size": 10000
+  },
+  "nodes": [
+    {
+      "config": {
+        "hw_addr": "aa:aa:aa:aa:aa:aa",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [0, 0, 0],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 20e-6,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": ["bb:bb:bb:bb:bb:bb", "192.168.1.3", 8080, 10234],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [0.01, 0.07],
+            "arg_bursty_inter": [0.1, 60],
+            "arg_hawkes": 0.05,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "bb:bb:bb:bb:bb:bb",
+        "ip_addr": "192.168.1.3",
+        "pos_xyz": [0, 0, 0],
+        "tx_config": {}
+      },
+      "traffic": []
+    }
+  ]
+}

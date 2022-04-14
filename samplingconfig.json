@@ -1,0 +1,21 @@
+{
+  "general": {
+    "sample_duration_s": 10,
+    "sample_interval_s": null,
+    "use_phy": true,
+    "pos_xyz": [0, 0, 0],
+    "output_name": "samples.npy"
+  },
+  "features": [
+    {
+      "property": "time",
+      "map_function": null,
+      "agg_function": "aggregators.count()"
+    },
+    {
+      "property": "~phy",
+      "map_function": null,
+      "agg_function": "aggregators.head(20)"
+    }
+  ]
+}
