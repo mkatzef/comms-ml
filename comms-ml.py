@@ -1,13 +1,15 @@
 #!/bin/python3
 """
-tx_trace_generator.py - produced communcication traces for use in a wireless
-signal simulation.
+comms-ml.py - produce communcication traces, and wireless signals for use in
+machine learning applications.
 
 Use this tool to:
 * Plan transmitter positions
-* Set transmitter comm data or patterns
-* Generate MATLAB-compatible traces that indicate periods of activity for each
-  device throughout a simulation.
+* Set transmitter comm options and behaviour
+* Generate PCAP files based on the above
+* Generate raw in-phase/quadrature physical signals for the contents of a PCAP
+* Parse a collection of PCAP and physical signals to collect feature vectors,
+  suitable for machine learning applications
 """
 
 import json
