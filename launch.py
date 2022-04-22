@@ -17,11 +17,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("sim_config", type=str, help="set sim config (JSON) path")
     parser.add_argument("sampling_config", type=str, help="set sampling config (JSON) path")
-    parser.add_argument("--verbosity", help="increase output verbosity")
+    parser.add_argument("--silent", help="silence runtime messages", action="store_true")
 
     args = parser.parse_args()
 
-    comms_ml.simulator.logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+    log_level = logging.INFO
+    if args.silent:
+        log_level = logging.WARN
+
+    logging.basicConfig(stream=sys.stdout, level=log_level)
 
     sim_config_file = args.sim_config
     sampling_config_file = args.sampling_config
@@ -34,13 +38,13 @@ if __name__ == "__main__":
     with open(sampling_config_file, 'r') as sampling_infile:
         sampling_dict = json.load(sampling_infile)
 
-    print("Starting simulation...")
+    logging.info("Starting simulation...")
     pcap_dir = comms_ml.simulator.run_sim(sim_dict)  # Writes PCAP files to the returned directory
 
-    print("Collecting samples from traffic...")
+    logging.info("Collecting samples from traffic...")
     #TODO move to comms_ml.sampler
     samples, samples_filename = comms_ml.simulator.collect_features(pcap_dir, sampling_dict)
 
     # Write feature file
-    print("Saving", len(samples), "samples to", samples_filename)
+    logging.info(f"Saving {len(samples)} samples to {samples_filename}")
     np.save(samples_filename, np.array(samples, dtype=object))

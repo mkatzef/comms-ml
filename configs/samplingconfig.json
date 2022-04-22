@@ -4,7 +4,7 @@
     "sample_interval_s": null,
     "use_phy": false,
     "pos_xyz": [0, 0, 0],
-    "output_name": "samples.npy"
+    "output_name": "./out/samples.npy"
   },
   "features": [
     {

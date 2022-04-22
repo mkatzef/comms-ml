@@ -6,18 +6,18 @@ Use this tool to:
 """
 
 import argparse
-import json
-import logging
-import numpy as np
-import scipy.io
-import matplotlib
-import matplotlib.pyplot as plt
-import random
 import codecs
 import heapq
+import json
+import logging
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 import os
-import sys
+import random
 from scapy.all import wrpcap, rdpcap
+import scipy.io
+import sys
 
 from . import sampler
 from .sampler import FeatureCollector, SampleCollector, PcapRecorder
@@ -272,11 +272,11 @@ def _run(max_sim_time, tx_list, verbose=False, save_final=True):
             print_counter += 1
             if print_counter >= 1000:
                 print_counter = 0
-                print(" Progress: %3d%%" % round(100 * current_time / max_sim_time), end="\r")
+                logging.info("Progress: %3d%%" % round(100 * current_time / max_sim_time))
     if save_final:
         status_change_lists.append(status_change_cache)
     if verbose:
-        print("\nDone")
+        logging.info("Simulation completed")
     return status_change_lists
 
 
@@ -365,5 +365,5 @@ def collect_features(pcap_dir, sampling_dict):
         # Record this packet if it's in the sampling window
         if sample_start_time <= pkt_time < sample_end_time:
             current_sample_packets.append(packet)
-    print("Sampled a total of", npkt, "packets")
+    logging.info(f"Sampled a total of {npkt} packets")
     return samples, output_filename

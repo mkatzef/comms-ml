@@ -1,8 +1,8 @@
 {
   "general": {
     "rng_seed": 1234,
-    "sim_time_s": 1000,
-    "output_pcap_dir": "./pcaps/",
+    "sim_time_s": 10000,
+    "output_pcap_dir": "./out/pcaps/",
     "pcap_max_size": 10000
   },
   "nodes": [

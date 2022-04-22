@@ -99,7 +99,7 @@ class MHP:
 
             # if past horizon, done
             if s >= horizon:
-                self.data = np.array(self.data)
+                self.data = np.array(self.data, dtype=object)
                 self.data = self.data[self.data[:,0] < horizon]
                 return self.data
 
