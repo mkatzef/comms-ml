@@ -15,12 +15,11 @@ Required software:
 *All required python packages can be installed using `pip install .` inside this repository's root directory.
 
 ## Usage
-Simulation and feature collection is performed by `comms-ml` based on the two configuration files  
-configuration files:  
+Simulation and feature collection is performed by `comms-ml` based on the two configuration files:  
 1. `simconfig.json`  
 2. `samplingconfig.json`
 
-These two files are the only two required arguments to the simulator, which may be called using:  
+The paths to these two files are the only required arguments to the simulator, which may be called using:  
 `python3 launch.py [-h] [--silent] sim_config sampling_config`
 
 ## Example
