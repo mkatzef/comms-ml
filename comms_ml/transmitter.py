@@ -4,8 +4,8 @@ import codecs
 import os
 from scapy.all import wrpcap, Ether, IP, UDP, Raw
 
-from traffic_models import get_traffic_model
-from sim_common import *
+from .traffic_models import get_traffic_model
+from .sim_common import *
 
 
 class Transmitter:
@@ -78,7 +78,7 @@ class Transmitter:
         tx_start_time, msg_len_bits = self.traffic_source.prepare_next_message(sim_time)
         self.tx_start_time = tx_start_time
         self.tx_duration = msg_len_bits / self.rate_Bps
-        self.msg_len_bits = msg_len_bits
+        self.msg_len_bits = max(8, msg_len_bits)
 
 
 def get_udp_packet(rec_time, msg_len_bits, node_cfg, traffic_cfg):

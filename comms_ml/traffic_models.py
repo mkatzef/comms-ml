@@ -1,4 +1,4 @@
-from MHP import MHP as MultidimHawkesProcess
+from .MHP import MHP as MultidimHawkesProcess
 import numpy as np
 from numpy.random import uniform
 

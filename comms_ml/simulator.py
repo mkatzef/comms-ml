@@ -1,18 +1,13 @@
-#!/bin/python3
 """
-comms-ml.py - produce communcication traces, and wireless signals for use in
-machine learning applications.
+simulator.py - produce communcication traces for machine learning applications.
 
 Use this tool to:
-* Plan transmitter positions
-* Set transmitter comm options and behaviour
-* Generate PCAP files based on the above
-* Generate raw in-phase/quadrature physical signals for the contents of a PCAP
-* Parse a collection of PCAP and physical signals to collect feature vectors,
-  suitable for machine learning applications
+* Generate PCAP files based on transmitter activity
 """
 
+import argparse
 import json
+import logging
 import numpy as np
 import scipy.io
 import matplotlib
@@ -24,14 +19,11 @@ import os
 import sys
 from scapy.all import wrpcap, rdpcap
 
-import sampler
-from sampler import FeatureCollector, SampleCollector, PcapRecorder
-import aggregators
-from transmitter import Transmitter
-from sim_common import *
-
-sim_config_file = "simconfig.json"
-sampling_config_file = "samplingconfig.json"
+from . import sampler
+from .sampler import FeatureCollector, SampleCollector, PcapRecorder
+from . import aggregators
+from .transmitter import Transmitter
+from .sim_common import *
 
 
 def plot_scene(tx_list, bl=(0,0), tr=(100,100)):
@@ -245,6 +237,7 @@ def get_sample_collector(feature_descs, use_phy=False):
 
 
 def _run(max_sim_time, tx_list, verbose=False, save_final=True):
+    """ Simulation core event loop """
     event_queue = []  # time: (device, action)
     def q_push(priority, item):
         heapq.heappush(event_queue, (priority, item))
@@ -345,6 +338,7 @@ def collect_features(pcap_dir, sampling_dict):
     sample_end_time = None
     current_sample_packets = []
     samples = []
+    npkt = 0
     for packet in packets_from_dir(pcap_dir):
         pkt_time = packet.time
 
@@ -357,6 +351,7 @@ def collect_features(pcap_dir, sampling_dict):
         if pkt_time >= sample_end_time:
             if len(current_sample_packets) > 0:
                 _, new_sample = sample_collector(current_sample_packets)
+                npkt += len(current_sample_packets)
                 samples.append(new_sample)
                 current_sample_packets = []
 
@@ -365,32 +360,10 @@ def collect_features(pcap_dir, sampling_dict):
                 sample_start_time = sample_start_time + sample_interval_s
             else:
                 sample_start_time = sample_end_time
-                sample_end_time = sample_start_time + sample_duration_s
+            sample_end_time = sample_start_time + sample_duration_s
 
         # Record this packet if it's in the sampling window
         if sample_start_time <= pkt_time < sample_end_time:
             current_sample_packets.append(packet)
-
+    print("Sampled a total of", npkt, "packets")
     return samples, output_filename
-
-
-if __name__ == "__main__":
-    sim_config_file = "simconfig.json"
-    sampling_config_file = "samplingconfig.json"
-
-    # Simulation structure
-    with open(sim_config_file, 'r') as sim_infile:
-        sim_dict = json.load(sim_infile)
-
-    # Sampling properties
-    with open(sampling_config_file, 'r') as sampling_infile:
-        sampling_dict = json.load(sampling_infile)
-
-    print("Starting simulation...")
-    pcap_dir = run_sim(sim_dict)  # Writes PCAP files to the returned directory
-
-    print("Collecting samples from traffic...")
-    samples, samples_filename = collect_features(pcap_dir, sampling_dict)
-    # Write feature file
-    print("Saving", len(samples), "samples to", samples_filename)
-    np.save(samples_filename, samples, dtype=object)

@@ -4,3 +4,6 @@ Matlab/Data/*
 *.npy
 *.mat
 *.jpg
+*.DS_Store
+*__pycache__*
+*.pcap

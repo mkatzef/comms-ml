@@ -1,3 +1,14 @@
+#!/usr/bin/python3
+"""
+sampler.py - produce ML-ready feature vectors (optionally based on
+raw) communcication wireless signals.
+
+Use this tool to:
+* Generate raw in-phase/quadrature physical signals for the contents of a PCAP
+* Parse a collection of PCAP and physical signals to collect feature vectors,
+  suitable for machine learning applications
+"""
+
 import numpy as np
 import os
 from scapy.all import wrpcap
