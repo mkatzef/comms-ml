@@ -9,6 +9,7 @@ Use this tool to:
   suitable for machine learning applications
 """
 
+import logging
 import numpy as np
 import os
 from scapy.all import wrpcap
@@ -113,12 +114,14 @@ def get_node_tx_record(node):
     hw_addr = node.config['hw_addr']
     return {hw_addr: args}
 
+
 def get_node_tx_desc(pkt):
     """
     Retrieves the tx description for the node that sent the given packet.
     This data is obtained using the packet's source mac address.
     """
     return HW_ADDR_MAP[pkt.src]
+
 
 def init_waveform_gen(seed, nodes):
     import matlab.engine

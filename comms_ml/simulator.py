@@ -339,6 +339,7 @@ def collect_features(pcap_dir, sampling_dict):
     current_sample_packets = []
     samples = []
     npkt = 0
+    print_interval = 10
     for packet in packets_from_dir(pcap_dir):
         pkt_time = packet.time
 
@@ -351,9 +352,13 @@ def collect_features(pcap_dir, sampling_dict):
         if pkt_time >= sample_end_time:
             if len(current_sample_packets) > 0:
                 _, new_sample = sample_collector(current_sample_packets)
+                prev_npkt = npkt
                 npkt += len(current_sample_packets)
                 samples.append(new_sample)
                 current_sample_packets = []
+
+                if (npkt // print_interval) - (prev_npkt // print_interval):
+                    logging.info(f"Sampled {print_interval * (npkt // print_interval)} packets")
 
             # Set the new sampling window
             if sample_interval_s is not None:

@@ -12,4 +12,4 @@ def downsample(factor):
 
 
 def head(n_elems):
-    return lambda arr: arr[:n_elems]
+    return lambda arr: arr[0][:n_elems]
