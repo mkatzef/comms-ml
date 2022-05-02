@@ -7,3 +7,6 @@ Matlab/Data/*
 *.DS_Store
 *__pycache__*
 *.pcap
+_build/*
+_static/*
+_templates/*

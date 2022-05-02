@@ -1,6 +1,5 @@
 from .MHP import MHP as MultidimHawkesProcess
 import numpy as np
-from numpy.random import uniform
 
 
 class TrafficSource:
@@ -29,9 +28,9 @@ class TrafficSourceBursty(TrafficSource):
         on the current time in the simulation. """
         self.burst_count -= 1
         if self.burst_count > 0:
-            tx_interval = uniform(*self.intra_burst_interval)
+            tx_interval = np.random.uniform(*self.intra_burst_interval)
         else:
-            tx_interval = uniform(*self.inter_burst_interval)
+            tx_interval = np.random.uniform(*self.inter_burst_interval)
             self.burst_count = np.random.randint(1, self.default_burst_counter)
 
         tx_start_time = sim_time + tx_interval

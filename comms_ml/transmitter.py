@@ -1,5 +1,5 @@
 import numpy as np
-from random import getrandbits
+import random
 import codecs
 import os
 from scapy.all import wrpcap, Ether, IP, UDP, Raw
@@ -82,7 +82,7 @@ class Transmitter:
 
 
 def get_udp_packet(rec_time, msg_len_bits, node_cfg, traffic_cfg):
-    payload = ('%%0%dx' % (msg_len_bits//4)) % getrandbits(msg_len_bits)
+    payload = ('%%0%dx' % (msg_len_bits//4)) % random.getrandbits(msg_len_bits)
     payload = codecs.decode(payload.encode(), 'hex')
 
     dmac, dip, dport, sport = traffic_cfg['dst']
