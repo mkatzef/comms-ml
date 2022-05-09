@@ -39,7 +39,9 @@ class PcapRecorder:
 
 
 def get_pkt_property(record, property_name):
-    if property_name == "~phy":
+    if property_name == "~pkt":
+        return record[0]
+    elif property_name == "~phy":
         return record[1]
     try:
         return record[0].__getattribute__(property_name)
@@ -54,7 +56,7 @@ class FeatureCollector:
         self.property_name = property_name
         self.agg_method = agg_method
         if property_map is None:
-            property_map = lambda x: x  # Leave the input value unchanged
+            property_map = lambda rec: rec[0]  # Keep only the property from the record
         self.property_map = property_map
 
     def __call__(self, records, ret=None):
@@ -62,7 +64,8 @@ class FeatureCollector:
             ret = []
 
         new_data = [get_pkt_property(record, self.property_name) for record in records]
-        new_data_mapped = [v for v in map(self.property_map, new_data) if v is not None]
+        new_data_mapped = [self.property_map((v, records[i])) for i, v in enumerate(new_data)]
+        new_data_mapped = [v for v in new_data_mapped if v is not None]
         new_feature = self.agg_method(new_data_mapped)
         ret.append(new_feature)
         return records, ret

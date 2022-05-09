@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import random
-from scapy.all import wrpcap, rdpcap
+from scapy.all import rdpcap, wrpcap, Ether, IP, UDP, TCP, Raw
 import scipy.io
 import sys
 
@@ -230,7 +230,7 @@ def get_sample_collector(feature_descs, use_phy=False):
         property_name = fd["property"]
         agg_function = eval(fd["agg_function"])
         mf = fd["map_function"]
-        property_map = eval(mf) if mf is not None else lambda x: x
+        property_map = eval(mf) if mf is not None else lambda x: x[0]
         fc = FeatureCollector(property_name, agg_function, property_map)
         feature_collectors.append(fc)
     return SampleCollector(feature_collectors, use_phy=use_phy)

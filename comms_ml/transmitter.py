@@ -2,7 +2,7 @@ import numpy as np
 import random
 import codecs
 import os
-from scapy.all import wrpcap, Ether, IP, UDP, Raw
+from scapy.all import wrpcap, Ether, IP, UDP, TCP, Raw
 
 from .traffic_models import get_traffic_model
 from .sim_common import *

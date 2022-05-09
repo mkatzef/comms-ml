@@ -10,12 +10,47 @@
     {
       "property": "time",
       "map_function": null,
+      "agg_function": "np.min"
+    },
+    {
+      "property": "time",
+      "map_function": null,
+      "agg_function": "np.max"
+    },
+    {
+      "property": "time",
+      "map_function": null,
       "agg_function": "aggregators.count()"
     },
     {
-      "property": "~phy",
+      "property": "~pkt",
       "map_function": null,
-      "agg_function": "aggregators.head(200)"
+      "agg_function": "aggregators.count_if(lambda x: TCP in x)"
+    },
+    {
+      "property": "~pkt",
+      "map_function": null,
+      "agg_function": "aggregators.count_if(lambda x: UDP in x)"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "np.min"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "np.max"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "np.mean"
+    },
+    {
+      "property": "~phy",
+      "map_function": "aggregators.keep_if(lambda rec: rec[0].dst == 'bb:bb:bb:bb:bb:bb')",
+      "agg_function": "aggregators.head(100)"
     }
   ]
 }
