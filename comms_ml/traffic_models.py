@@ -1,6 +1,6 @@
 from .MHP import MHP as MultidimHawkesProcess
+from .sim_common import *
 import numpy as np
-
 
 class TrafficSource:
     def __init__(self, **kwargs):

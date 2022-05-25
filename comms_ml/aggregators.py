@@ -1,3 +1,4 @@
+import numpy as np
 
 
 def count():
@@ -22,8 +23,22 @@ def tail(n_elems):
 
 def keep_if(condition):
     """ Returns a property map that keeps only the first element """
-    def ret_func(prop_rec):
-        prop, record = prop_rec
-        if condition(record):
-            return prop
+    def ret_func(prop_recs):
+        for prop, record in prop_recs:
+            if condition(record):
+                return [prop]
+        return []
     return ret_func
+
+
+def iat():
+    def ret_func(arr):
+        n_elems = len(arr)
+        if n_elems <= 1:
+            return [0] * n_elems
+        return [np.NaN] + [float(arr[i+1][0]) - float(arr[i][0]) for i in range(n_elems - 1)]
+    return ret_func
+
+
+def n_unique():
+    return lambda arr: len(set(arr))

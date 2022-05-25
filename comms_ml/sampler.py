@@ -44,9 +44,9 @@ def get_pkt_property(record, property_name):
     elif property_name == "~phy":
         return record[1]
     try:
-        return record[0].__getattribute__(property_name)
+        return record[0].__getattr__(property_name)
     except AttributeError:
-        return None
+        return record[0].__getattribute__(property_name)
 
 
 class FeatureCollector:
@@ -56,7 +56,7 @@ class FeatureCollector:
         self.property_name = property_name
         self.agg_method = agg_method
         if property_map is None:
-            property_map = lambda rec: rec[0]  # Keep only the property from the record
+            property_map = lambda arr: [a[0] for a in arr]  # Keep only the property from the record
         self.property_map = property_map
 
     def __call__(self, records, ret=None):
@@ -64,9 +64,13 @@ class FeatureCollector:
             ret = []
 
         new_data = [get_pkt_property(record, self.property_name) for record in records]
-        new_data_mapped = [self.property_map((v, records[i])) for i, v in enumerate(new_data)]
+        new_data_mapped = self.property_map([(v, records[i]) for i, v in enumerate(new_data)])
         new_data_mapped = [v for v in new_data_mapped if v is not None]
+        if len(new_data_mapped) == 0:
+            return records, None
         new_feature = self.agg_method(new_data_mapped)
+        if new_feature is None:
+            return records, None
         ret.append(new_feature)
         return records, ret
 
@@ -84,10 +88,11 @@ class SampleCollector:
         features that were collected
         """
         records = packets_to_records(packets, self.use_phy)
-
         ret = []
         for fc in self.fcs:
             _, ret = fc(records, ret)
+            if ret is None:
+                return records, None
         return records, ret
 
 

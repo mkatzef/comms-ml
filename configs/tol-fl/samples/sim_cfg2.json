@@ -1,0 +1,1018 @@
+{
+  "general": {
+    "rng_seed": 1251,
+    "sim_time_s": 604800,
+    "output_pcap_dir": "./out2/pcaps/",
+    "pcap_max_size": 100000
+  },
+  "nodes": [
+    {
+      "config": {
+        "hw_addr": "f6:f6:f7:d2:00:72",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "50:9d:66:cd:fb:0b",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "d8:9e:c8:0a:d3:3b",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "69:ef:48:8a:2b:3a",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "de:5c:05:1b:a6:5d",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "f5:c4:47:6e:f6:a5",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "f8:5a:a2:ae:17:8a",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "75:b5:bb:d3:c2:39",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "3a:fa:1f:96:e4:f6",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "28:40:f3:5e:2b:7f",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              120
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "6e:9f:33:41:ad:e7",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "85:4b:52:58:e4:8e",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "ec:a6:ac:fc:e6:9e",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "2e:24:c2:ae:42:fe",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "66:b5:47:90:97:17",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "45:8c:30:a9:e0:5e",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "98:e9:7b:97:63:84",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "f1:ea:84:53:36:05",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "ed:dc:57:94:12:f9",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "c4:9f:31:45:7c:bd",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "40:b7:f2:d6:71:69",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    },
+    {
+      "config": {
+        "hw_addr": "40:b7:f2:d6:71:69",
+        "ip_addr": "192.168.1.2",
+        "pos_xyz": [
+          0,
+          0,
+          0
+        ],
+        "tx_config": {
+          "ChannelBandwidth": "CBW160",
+          "NumTransmitAntennas": 1.0,
+          "NumSpaceTimeStreams": 1.0,
+          "MCS": 1.0,
+          "idleTime": 2e-05,
+          "oversamplingFactor": 1.5,
+          "FrameFormat": "VHT",
+          "postProcFunc": "@(x, a) x"
+        }
+      },
+      "traffic": [
+        {
+          "dst": [
+            "f6:f6:f7:d2:00:72",
+            "192.168.1.3",
+            8080,
+            10234
+          ],
+          "model": {
+            "traffic_type": "bursty",
+            "tx_len_min_bytes": 1,
+            "tx_len_max_bytes": 1500,
+            "arg_bursty_n": 5,
+            "arg_bursty_intra": [
+              0.01,
+              0.07
+            ],
+            "arg_bursty_inter": [
+              1,
+              10
+            ],
+            "arg_hawkes": 0.15,
+            "weekend_mult": 0.5
+          },
+          "packet_source": "get_udp_packet"
+        }
+      ]
+    }
+  ]
+}

@@ -39,11 +39,11 @@ if __name__ == "__main__":
         sampling_dict = json.load(sampling_infile)
 
     logging.info("Starting simulation...")
-    pcap_dir = comms_ml.simulator.run_sim(sim_dict)  # Writes PCAP files to the returned directory
+    pcap_dir = comms_ml.simulator.run_sim(sim_dict, init_only=True)  # Writes PCAP files to the returned directory
 
     logging.info("Collecting samples from traffic...")
     #TODO move to comms_ml.sampler
-    samples, samples_filename = comms_ml.simulator.collect_features(pcap_dir, sampling_dict)
+    samples, samples_filename = comms_ml.simulator.collect_features(pcap_dir, sampling_dict, progress_max_time=sim_dict['general']['sim_time_s'])
 
     # Write feature file
     logging.info(f"Saving {len(samples)} samples to {samples_filename}")

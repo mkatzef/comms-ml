@@ -230,7 +230,7 @@ def get_sample_collector(feature_descs, use_phy=False):
         property_name = fd["property"]
         agg_function = eval(fd["agg_function"])
         mf = fd["map_function"]
-        property_map = eval(mf) if mf is not None else lambda x: x[0]
+        property_map = eval(mf) if mf is not None else None
         fc = FeatureCollector(property_name, agg_function, property_map)
         feature_collectors.append(fc)
     return SampleCollector(feature_collectors, use_phy=use_phy)
@@ -280,7 +280,7 @@ def _run(max_sim_time, tx_list, verbose=False, save_final=True):
     return status_change_lists
 
 
-def run_sim(sim_dict):
+def run_sim(sim_dict, init_only=False):
     global SEED, NODES
     sim_general = sim_dict["general"]
 
@@ -291,7 +291,7 @@ def run_sim(sim_dict):
     # Create pcap dir
     pcap_dir = sim_general["output_pcap_dir"]
     if os.path.exists(pcap_dir):
-        input("PCAP dir already exists, press ENTER to CONTINUE...")
+        logging.warning("PCAP dir already exists! Overwriting!")
     else:
         os.makedirs(pcap_dir)
 
@@ -300,8 +300,10 @@ def run_sim(sim_dict):
     sim_time_s = sim_general["sim_time_s"]
     NODES = create_nodes(sim_dict["nodes"], sim_time_s=sim_time_s, message_cache=message_cache)
 
-    status_changes = _run(sim_time_s, NODES, verbose=True)  # Saves pcaps as needed, return value unused
-    message_cache.save_and_reset()
+    if not init_only:
+        status_changes = _run(sim_time_s, NODES, verbose=True)  # Saves pcaps as needed, return value unused
+        message_cache.save_and_reset()
+
     return pcap_dir
 
 
@@ -313,7 +315,7 @@ def packets_from_dir(pcap_dir):
             yield packet
 
 
-def collect_features(pcap_dir, sampling_dict):
+def collect_features(pcap_dir, sampling_dict, progress_max_time=None):
     sampling_general = sampling_dict["general"]
     use_phy = sampling_general["use_phy"]
     if use_phy:
@@ -339,9 +341,17 @@ def collect_features(pcap_dir, sampling_dict):
     current_sample_packets = []
     samples = []
     npkt = 0
-    print_interval = 10
+    prev_perc = -1
+    init_time = None
     for packet in packets_from_dir(pcap_dir):
         pkt_time = packet.time
+        if init_time is None:
+            init_time = pkt_time
+        if progress_max_time is not None:
+            perc = int(100 * (pkt_time - init_time) / progress_max_time)
+            if perc > prev_perc:
+                prev_perc = perc
+                logging.info(f"Processed {perc}% of sampled duration")
 
         # First loop
         if sample_start_time is None:
@@ -354,11 +364,9 @@ def collect_features(pcap_dir, sampling_dict):
                 _, new_sample = sample_collector(current_sample_packets)
                 prev_npkt = npkt
                 npkt += len(current_sample_packets)
-                samples.append(new_sample)
+                if new_sample is not None:
+                    samples.append(new_sample)
                 current_sample_packets = []
-
-                if (npkt // print_interval) - (prev_npkt // print_interval):
-                    logging.info(f"Sampled {print_interval * (npkt // print_interval)} packets")
 
             # Set the new sampling window
             if sample_interval_s is not None:

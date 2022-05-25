@@ -1,0 +1,80 @@
+{
+  "general": {
+    "sample_duration_s": 1,
+    "sample_interval_s": 60,
+    "use_phy": true,
+    "pos_xyz": [
+      0,
+      0,
+      0
+    ],
+    "output_name": "./out1/samples.npy"
+  },
+  "features": [
+    {
+      "property": "time",
+      "map_function": null,
+      "agg_function": "aggregators.count()"
+    },
+    {
+      "property": "time",
+      "map_function": "aggregators.iat()",
+      "agg_function": "np.nanmin"
+    },
+    {
+      "property": "time",
+      "map_function": "aggregators.iat()",
+      "agg_function": "np.nanmax"
+    },
+    {
+      "property": "time",
+      "map_function": "aggregators.iat()",
+      "agg_function": "np.nanmean"
+    },
+    {
+      "property": "~pkt",
+      "map_function": null,
+      "agg_function": "aggregators.count_if(lambda x: TCP in x)"
+    },
+    {
+      "property": "~pkt",
+      "map_function": null,
+      "agg_function": "aggregators.count_if(lambda x: UDP in x)"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "np.min"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "np.max"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "np.mean"
+    },
+    {
+      "property": "wirelen",
+      "map_function": null,
+      "agg_function": "aggregators.n_unique()"
+    },
+    {
+      "property": "src",
+      "map_function": null,
+      "agg_function": "aggregators.n_unique()"
+    },
+    {
+      "property": "dst",
+      "map_function": null,
+      "agg_function": "aggregators.n_unique()"
+    },
+    {
+      "property": "~phy",
+      "map_function": "aggregators.keep_if(lambda rec: rec[0].src == 'da:f2:48:68:f0:44')",
+      "agg_function": "aggregators.head(200)"
+    }
+  ]
+}
