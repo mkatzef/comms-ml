@@ -2,7 +2,7 @@
 simulator.py - produce communcication traces for machine learning applications.
 
 Use this tool to:
-* Generate PCAP files based on transmitter activity
+    * Generate PCAP files based on transmitter activity
 """
 
 import argparse
@@ -209,6 +209,9 @@ def plot_samples(exp_dir="./data"):
 
 
 def create_nodes(node_descs, sim_time_s=None, message_cache=None):
+    """
+    Returns a list of transmitters based on the given configs
+    """
     nodes = []
     for nd in node_descs:
         config = nd["config"]
@@ -281,6 +284,14 @@ def _run(max_sim_time, tx_list, verbose=False, save_final=True):
 
 
 def run_sim(sim_dict, init_only=False):
+    """
+    Executes the simulator's finite events as defined in the given config
+
+    If init_only is set, the simulator performs a "dry run" leaving the
+    necessary init for sampling.
+    """
+    #TODO: refactor initialization into a separate init function
+
     global SEED, NODES
     sim_general = sim_dict["general"]
 
@@ -308,6 +319,9 @@ def run_sim(sim_dict, init_only=False):
 
 
 def packets_from_dir(pcap_dir):
+    """
+    Iterates over every packet in every (sorted) PCAP in the given directory
+    """
     pcap_names = list(sorted(next(os.walk(pcap_dir))[2]))
     for pn in pcap_names:
         packets = rdpcap(os.path.join(pcap_dir, pn))
@@ -316,6 +330,10 @@ def packets_from_dir(pcap_dir):
 
 
 def collect_features(pcap_dir, sampling_dict, progress_max_time=None):
+    """
+    Returns the features collected from the PCAPs in pcap_dir, using the given
+    sampling configuration
+    """
     sampling_general = sampling_dict["general"]
     use_phy = sampling_general["use_phy"]
     if use_phy:

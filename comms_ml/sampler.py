@@ -136,6 +136,9 @@ def get_node_tx_desc(pkt):
 
 
 def init_waveform_gen(seed, nodes):
+    """
+    Required initialization for the MATLAB engine
+    """
     import matlab.engine
     global MATLAB
     MATLAB = matlab.engine.start_matlab()
@@ -146,6 +149,9 @@ def init_waveform_gen(seed, nodes):
 
 
 def generate_waveform(pkt):
+    """
+    Passes packet descriptions to MATLAB for PHY generation
+    """
     args = get_node_tx_desc(pkt)
     return _generate_waveform(pkt.build(), args)
 

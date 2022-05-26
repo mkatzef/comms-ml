@@ -1,3 +1,7 @@
+"""
+The basic unit representing a device in the comms_ml simulator.
+"""
+
 import numpy as np
 import random
 import codecs
@@ -9,6 +13,14 @@ from .sim_common import *
 
 
 class Transmitter:
+    """
+    The transmitter class.
+    Stores node configuration data as well as the time and data for the very
+    next packet, as used in the simulator.
+
+    **Note**: Only one traffic source per device is currently honoured. Adding
+    more than one traffic source can result in concurrent transmissions.
+    """
     def __init__(self, config, traffic_descs, sim_time_s=None, rate_Bps=1e6, message_cache=None):
         self.config = config
 
@@ -82,6 +94,9 @@ class Transmitter:
 
 
 def get_udp_packet(rec_time, msg_len_bits, node_cfg, traffic_cfg):
+    """
+    Example packet formatter for UDP packets with a given configuration
+    """
     payload = ('%%0%dx' % (msg_len_bits//4)) % random.getrandbits(msg_len_bits)
     payload = codecs.decode(payload.encode(), 'hex')
 

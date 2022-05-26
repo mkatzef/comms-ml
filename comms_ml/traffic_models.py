@@ -1,6 +1,11 @@
+"""
+Distribution functions for a transmitter's outbound traffic.
+"""
+
 from .MHP import MHP as MultidimHawkesProcess
 from .sim_common import *
 import numpy as np
+
 
 class TrafficSource:
     def __init__(self, **kwargs):
@@ -11,6 +16,15 @@ class TrafficSource:
 
 
 class TrafficSourceBursty(TrafficSource):
+    """
+    A traffic source that outputs transmission times randomly that follow two
+    schedules:
+
+    inter_burst - time between bursts
+    intra_burst - time between packets in one burst.
+
+    inter_burst >> intra_burst.
+    """
     def __init__(self, burst_counter=1, tx_len_min_bytes=10, tx_len_max_bytes=10,
         intra_burst_interval=(0.01, 0.07), inter_burst_interval=(0.1, 60)):
 
@@ -57,8 +71,12 @@ def get_hp_params(day_index, second, weekends=0.5):
 
 
 class TrafficSourceHawkes(TrafficSource):
-    # Hawkes builds a queue of packet arrivals and pops from that for traffic
-    # Uses max time (popped, current) so a bottleneck will still process messages in order
+    """
+    Generates transmission times drawn from a Hawkes Process.
+
+    Hawkes builds a queue of packet arrivals and pops from that for traffic
+    Uses max time (popped, current) so a bottleneck will still process messages in order
+    """
     def __init__(self, tx_len_min_bytes=10, tx_len_max_bytes=10, total_time_s=2, intensity=0.05):
         super().__init__()
         self.tx_len_min_bytes = tx_len_min_bytes
@@ -82,6 +100,10 @@ class TrafficSourceHawkes(TrafficSource):
 
 
 class TrafficSourceBenchmark(TrafficSource):
+    """
+    Generates equally-spaced transmission times for the purposes of
+    stress-testing the simulator.
+    """
     def __init__(self, tx_len_max_bytes=10, interval_s=0.5, index=0):
         super().__init__()
         self.tx_len_max_bytes = tx_len_max_bytes
@@ -96,8 +118,10 @@ class TrafficSourceBenchmark(TrafficSource):
 
 
 class TrafficSourceHawkesPeriodic(TrafficSource):
-    # Hawkes builds a queue of packet arrivals and pops from that for traffic
-    # Uses max time (popped, current) so a bottleneck will still process messages in order
+    """
+    A variant of the Hawkes Process traffic source that alters the transmission
+    likelihood based on the current time (such as weekday vs weekend)
+    """
     def __init__(self, tx_len_min_bytes=10, tx_len_max_bytes=10, total_time_s=2, weekend_mult=0.5):
         super().__init__()
         self.tx_len_min_bytes = tx_len_min_bytes
@@ -144,6 +168,11 @@ def get_traffic_model(
     arg_bursty_inter=(0.1, 60),
     arg_hawkes=0.05,
     weekend_mult=0.5):
+
+    """
+    A convenience function that takes the traffic model name as a required
+    argument and populates any missing argument with defaults.
+    """
 
     if traffic_type == "bursty":
         new_traffic = TrafficSourceBursty(
