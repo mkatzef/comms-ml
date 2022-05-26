@@ -80,6 +80,35 @@
              
   <section id="module-comms_ml.transmitter">
 <span id="transmitter"></span><h1>transmitter<a class="headerlink" href="#module-comms_ml.transmitter" title="Permalink to this headline"></a></h1>
+<p>The basic unit representing a device in the comms_ml simulator.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="comms_ml.transmitter.Transmitter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">comms_ml.transmitter.</span></span><span class="sig-name descname"><span class="pre">Transmitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_descs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_time_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_Bps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.transmitter.Transmitter" title="Permalink to this definition"></a></dt>
+<dd><p>The transmitter class.
+Stores node configuration data as well as the time and data for the very
+next packet, as used in the simulator.</p>
+<p><strong>Note</strong>: Only one traffic source per device is currently honoured. Adding
+more than one traffic source can result in concurrent transmissions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="comms_ml.transmitter.Transmitter.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.transmitter.Transmitter.end" title="Permalink to this definition"></a></dt>
+<dd><p>Returns next start time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="comms_ml.transmitter.Transmitter.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.transmitter.Transmitter.start" title="Permalink to this definition"></a></dt>
+<dd><p>Returns next end time.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.transmitter.get_udp_packet">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.transmitter.</span></span><span class="sig-name descname"><span class="pre">get_udp_packet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rec_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_len_bits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_cfg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.transmitter.get_udp_packet" title="Permalink to this definition"></a></dt>
+<dd><p>Example packet formatter for UDP packets with a given configuration</p>
+</dd></dl>
+
 </section>
 
 

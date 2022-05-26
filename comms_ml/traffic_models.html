@@ -80,11 +80,79 @@
              
   <section id="module-comms_ml.traffic_models">
 <span id="traffic-models"></span><h1>traffic_models<a class="headerlink" href="#module-comms_ml.traffic_models" title="Permalink to this headline"></a></h1>
+<p>Distribution functions for a transmitter’s outbound traffic.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceBenchmark">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">TrafficSourceBenchmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tx_len_max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceBenchmark" title="Permalink to this definition"></a></dt>
+<dd><p>Generates equally-spaced transmission times for the purposes of
+stress-testing the simulator.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceBursty">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">TrafficSourceBursty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">burst_counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_min_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intra_burst_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.07)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_burst_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">60)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceBursty" title="Permalink to this definition"></a></dt>
+<dd><p>A traffic source that outputs transmission times randomly that follow two
+schedules:</p>
+<p>inter_burst - time between bursts
+intra_burst - time between packets in one burst.</p>
+<p>inter_burst &gt;&gt; intra_burst.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceBursty.prepare_next_message">
+<span class="sig-name descname"><span class="pre">prepare_next_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceBursty.prepare_next_message" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a random time at which the next message will start based
+on the current time in the simulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceHawkes">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">TrafficSourceHawkes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tx_len_min_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_time_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceHawkes" title="Permalink to this definition"></a></dt>
+<dd><p>Generates transmission times drawn from a Hawkes Process.</p>
+<p>Hawkes builds a queue of packet arrivals and pops from that for traffic
+Uses max time (popped, current) so a bottleneck will still process messages in order</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceHawkes.prepare_next_message">
+<span class="sig-name descname"><span class="pre">prepare_next_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceHawkes.prepare_next_message" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a random time at which the next message will start based
+on the current time in the simulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceHawkesPeriodic">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">TrafficSourceHawkesPeriodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tx_len_min_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_time_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weekend_mult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceHawkesPeriodic" title="Permalink to this definition"></a></dt>
+<dd><p>A variant of the Hawkes Process traffic source that alters the transmission
+likelihood based on the current time (such as weekday vs weekend)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceHawkesPeriodic.prepare_message_sequence">
+<span class="sig-name descname"><span class="pre">prepare_message_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceHawkesPeriodic.prepare_message_sequence" title="Permalink to this definition"></a></dt>
+<dd><p>Generates at least 1 message based on the current time and multiples
+of the given horizon</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceHawkesPeriodic.prepare_next_message">
+<span class="sig-name descname"><span class="pre">prepare_next_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceHawkesPeriodic.prepare_next_message" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a random time at which the next message will start based
+on the current time in the simulation.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="comms_ml.traffic_models.get_day_second_from_time">
 <span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">get_day_second_from_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.get_day_second_from_time" title="Permalink to this definition"></a></dt>
 <dd><p>Time difference in days and seconds from sim start.
 Note: wraps at weeks.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.traffic_models.get_traffic_model">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">get_traffic_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traffic_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_min_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_time_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg_bursty_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg_bursty_intra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.07)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg_bursty_inter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">60)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg_hawkes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weekend_mult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.get_traffic_model" title="Permalink to this definition"></a></dt>
+<dd><p>A convenience function that takes the traffic model name as a required
+argument and populates any missing argument with defaults.</p>
 </dd></dl>
 
 </section>

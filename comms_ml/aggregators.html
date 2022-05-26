@@ -80,10 +80,59 @@
              
   <section id="module-comms_ml.aggregators">
 <span id="aggregators"></span><h1>aggregators<a class="headerlink" href="#module-comms_ml.aggregators" title="Permalink to this headline"></a></h1>
+<p>A collection of comms_ml “aggregation functions” - functions that return a
+post-processing function. This post-processing converts a list of pre-processed
+values such as packet timestamp in milliseconds into a fixed-length feature
+such as the mean.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.count">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.count" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an aggregator for the number of occurrences</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.count_if">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">count_if</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.count_if" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an aggregator for the number of occurrences that match the given
+condition</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.downsample">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">downsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.downsample" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an aggregator for the first valid element of the samples,
+downsampled with the given factor.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.head">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_elems</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.head" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an aggregator for the first n_elems elements of the first sample</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.iat">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">iat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.iat" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a property map that contains the inter-arrival times of the given
+packets</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="comms_ml.aggregators.keep_if">
 <span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">keep_if</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.keep_if" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a property map that keeps only the first element</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.n_unique">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">n_unique</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.n_unique" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of unique elements</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.aggregators.tail">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.aggregators.</span></span><span class="sig-name descname"><span class="pre">tail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_elems</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.aggregators.tail" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an aggregator for the last n_elems elements of the first sample</p>
 </dd></dl>
 
 </section>

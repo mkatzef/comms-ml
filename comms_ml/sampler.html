@@ -83,8 +83,8 @@
 <p>sampler.py - produce ML-ready feature vectors (optionally based on
 raw) communcication wireless signals.</p>
 <p>Use this tool to:
-* Generate raw in-phase/quadrature physical signals for the contents of a PCAP
-* Parse a collection of PCAP and physical signals to collect feature vectors,</p>
+1. Generate raw in-phase/quadrature physical signals for the contents of a PCAP
+2. Parse a collection of PCAP and physical signals to collect feature vectors,</p>
 <blockquote>
 <div><p>suitable for machine learning applications</p>
 </div></blockquote>
@@ -96,10 +96,22 @@ have been given to an instance of PcapRecorder.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.sampler.generate_waveform">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.sampler.</span></span><span class="sig-name descname"><span class="pre">generate_waveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pkt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.sampler.generate_waveform" title="Permalink to this definition"></a></dt>
+<dd><p>Passes packet descriptions to MATLAB for PHY generation</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="comms_ml.sampler.get_node_tx_desc">
 <span class="sig-prename descclassname"><span class="pre">comms_ml.sampler.</span></span><span class="sig-name descname"><span class="pre">get_node_tx_desc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pkt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.sampler.get_node_tx_desc" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the tx description for the node that sent the given packet.
 This data is obtained using the packet’s source mac address.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="comms_ml.sampler.init_waveform_gen">
+<span class="sig-prename descclassname"><span class="pre">comms_ml.sampler.</span></span><span class="sig-name descname"><span class="pre">init_waveform_gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.sampler.init_waveform_gen" title="Permalink to this definition"></a></dt>
+<dd><p>Required initialization for the MATLAB engine</p>
 </dd></dl>
 
 </section>
