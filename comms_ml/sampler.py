@@ -4,8 +4,8 @@ sampler.py - produce ML-ready feature vectors (optionally based on
 raw) communcication wireless signals.
 
 Use this tool to:
-* Generate raw in-phase/quadrature physical signals for the contents of a PCAP
-* Parse a collection of PCAP and physical signals to collect feature vectors,
+1. Generate raw in-phase/quadrature physical signals for the contents of a PCAP
+2. Parse a collection of PCAP and physical signals to collect feature vectors,
   suitable for machine learning applications
 """
 
@@ -19,6 +19,10 @@ HW_ADDR_MAP = {}
 
 
 class PcapRecorder:
+    """
+    Writes packets to disk in PCAP format every time a certain number of packets
+    have been given to an instance of PcapRecorder.
+    """
     def __init__(self, out_dir, n_store):
         self.n_store = n_store
         self.packets = []
