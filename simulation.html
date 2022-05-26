@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation &mdash; comms_ml 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sampling" href="sampling.html" />
+    <link rel="prev" title="Quick Start" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> comms_ml
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="comms_ml/comms_ml.html">comms_ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nodes">Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sampling.html">Sampling</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">comms_ml</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/simulation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simulation">
+<h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline"></a></h1>
+<section id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">comms_ml</span></code> includes a finite event-based simulator to generate rudimentary network traffic that is representative of real-world scenarios.
+The output of this simulator is a set of PCAP files containing the packets that were exchanged throughout the network for a given simulation duration.
+If such a PCAP files is already available (which may occur if activity has been previously recorded), the simulation instead acts as an interface between existing PCAPs and the sampling component.</p>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">comms_ml</span></code> simulation is defined by a series of parameters inside of a JSON-formatted configuration file.</p>
+<p>The required properties of this JSON file are shown in the following example (with some possible values):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;general&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;rng_seed&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s2">&quot;sim_time_s&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s2">&quot;output_pcap_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;./pcaps/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pcap_max_size&quot;</span><span class="p">:</span> <span class="mi">10000</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;nodes&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, we see two key components - general information, and a (currently empty) array of nodes.
+The general information contains values for the random number generator seed, simulation duration, output directory, and maximum number of packets per PCAP file.</p>
+</section>
+<section id="nodes">
+<h2>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline"></a></h2>
+<p>The fundamental unit in each <cite>comms_ml</cite> simulation is the node - a communications device (typically using WLAN).
+Each node is defined as a JSON object that specifies its communication interfaces and behaviours.</p>
+<p>An example node (with all of the simulator-supported options shown) is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;hw_addr&quot;</span><span class="p">:</span> <span class="s2">&quot;aa:aa:aa:aa:aa:aa&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ip_addr&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.1.2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pos_xyz&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s2">&quot;tx_config&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;ChannelBandwidth&quot;</span><span class="p">:</span> <span class="s2">&quot;CBW160&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;NumTransmitAntennas&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="s2">&quot;NumSpaceTimeStreams&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="s2">&quot;MCS&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="s2">&quot;idleTime&quot;</span><span class="p">:</span> <span class="mf">20e-6</span><span class="p">,</span>
+      <span class="s2">&quot;oversamplingFactor&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+      <span class="s2">&quot;FrameFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;VHT&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;postProcFunc&quot;</span><span class="p">:</span> <span class="s2">&quot;@(x, a) x&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;traffic&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;dst&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bb:bb:bb:bb:bb:bb&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.1.3&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="mi">10234</span><span class="p">],</span>
+      <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;traffic_type&quot;</span><span class="p">:</span> <span class="s2">&quot;hawkes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tx_len_min_bytes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;tx_len_max_bytes&quot;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+        <span class="s2">&quot;arg_bursty_n&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;arg_bursty_intra&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">],</span>
+        <span class="s2">&quot;arg_bursty_inter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s2">&quot;arg_hawkes&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
+        <span class="s2">&quot;weekend_mult&quot;</span><span class="p">:</span> <span class="mf">0.5</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;packet_source&quot;</span><span class="p">:</span> <span class="s2">&quot;get_udp_packet&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each node can have 0 or more traffic descriptions that specify the destination for generated packets and the distribution function of packets being generated.</p>
+<p><strong>Note</strong>: the <code class="docutils literal notranslate"><span class="pre">tx_config</span></code> property is passed directly to MATLAB if using MATLAB-based physical signal generation. If any custom MATLAB processing is required, additional data may be passed to said processing by adding <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> pairs to the <code class="docutils literal notranslate"><span class="pre">tx_config</span></code> property.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sampling.html" class="btn btn-neutral float-right" title="Sampling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Marc Katzef.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
