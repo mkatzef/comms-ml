@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; comms_ml 0.1 documentation</title>
+  <title>comms_ml &mdash; comms_ml 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,6 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="aggregators" href="aggregators.html" />
     <link rel="prev" title="Welcome to comms_ml’s documentation!" href="../index.html" /> 
 </head>
 
@@ -36,10 +37,22 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul class="simple">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">comms_ml</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aggregators.html">aggregators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampler.html">sampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html">simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traffic_models.html">traffic_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transmitter.html">transmitter</a></li>
 </ul>
-</div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sampling.html">Sampling</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -54,7 +67,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>&lt;no title&gt;</li>
+      <li>comms_ml</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/comms_ml/comms_ml.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -64,70 +77,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p>comms_ml library</p>
-<span class="target" id="module-comms_ml.aggregators"></span><span class="target" id="module-comms_ml.sampler"></span><p>sampler.py - produce ML-ready feature vectors (optionally based on
-raw) communcication wireless signals.</p>
-<p>Use this tool to:
-* Generate raw in-phase/quadrature physical signals for the contents of a PCAP
-* Parse a collection of PCAP and physical signals to collect feature vectors,</p>
-<blockquote>
-<div><p>suitable for machine learning applications</p>
-</div></blockquote>
-<dl class="py function">
-<dt class="sig sig-object py" id="comms_ml.sampler.get_node_tx_desc">
-<span class="sig-prename descclassname"><span class="pre">comms_ml.sampler.</span></span><span class="sig-name descname"><span class="pre">get_node_tx_desc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pkt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.sampler.get_node_tx_desc" title="Permalink to this definition"></a></dt>
-<dd><p>Retrieves the tx description for the node that sent the given packet.
-This data is obtained using the packet’s source mac address.</p>
-</dd></dl>
+  <section id="comms-ml">
+<h1>comms_ml<a class="headerlink" href="#comms-ml" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aggregators.html">aggregators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampler.html">sampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traffic_models.html">traffic_models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transmitter.html">transmitter</a></li>
+</ul>
+</div>
+</section>
 
-<span class="target" id="module-comms_ml.sim_common"></span><span class="target" id="module-comms_ml.simulator"></span><p>simulator.py - produce communcication traces for machine learning applications.</p>
-<p>Use this tool to:
-* Generate PCAP files based on transmitter activity</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="comms_ml.simulator.get_features">
-<span class="sig-prename descclassname"><span class="pre">comms_ml.simulator.</span></span><span class="sig-name descname"><span class="pre">get_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_changes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timescale_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.simulator.get_features" title="Permalink to this definition"></a></dt>
-<dd><p>Generates feature vectors from activity trace.
-Initially made to collect average IAT for each channel.
-tx_map (optional) is {tx_index : channel_index}</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="comms_ml.simulator.play_status_changes">
-<span class="sig-prename descclassname"><span class="pre">comms_ml.simulator.</span></span><span class="sig-name descname"><span class="pre">play_status_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_changes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.simulator.play_status_changes" title="Permalink to this definition"></a></dt>
-<dd><p>An animated visual representation</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="comms_ml.simulator.plot_status_timeline">
-<span class="sig-prename descclassname"><span class="pre">comms_ml.simulator.</span></span><span class="sig-name descname"><span class="pre">plot_status_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_changes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.simulator.plot_status_timeline" title="Permalink to this definition"></a></dt>
-<dd><p>A static visual representation</p>
-</dd></dl>
-
-<span class="target" id="module-comms_ml.traffic_models"></span><dl class="py class">
-<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceBursty">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">TrafficSourceBursty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">burst_counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_min_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_len_max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intra_burst_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.07)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_burst_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">60)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceBursty" title="Permalink to this definition"></a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="comms_ml.traffic_models.TrafficSourceBursty.prepare_next_message">
-<span class="sig-name descname"><span class="pre">prepare_next_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.TrafficSourceBursty.prepare_next_message" title="Permalink to this definition"></a></dt>
-<dd><p>Generates a random time at which the next message will start based
-on the current time in the simulation.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="comms_ml.traffic_models.get_day_second_from_time">
-<span class="sig-prename descclassname"><span class="pre">comms_ml.traffic_models.</span></span><span class="sig-name descname"><span class="pre">get_day_second_from_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#comms_ml.traffic_models.get_day_second_from_time" title="Permalink to this definition"></a></dt>
-<dd><p>Time difference in days and seconds from sim start.
-Note: wraps at weeks.</p>
-</dd></dl>
-
-<span class="target" id="module-comms_ml.transmitter"></span>
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to comms_ml’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aggregators.html" class="btn btn-neutral float-right" title="aggregators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

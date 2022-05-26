@@ -11,12 +11,12 @@ Welcome to comms_ml's documentation!
    :caption: Contents:
 
    comms_ml/comms_ml
-
-
+   installation
+   quick_start
+   simulation
+   sampling
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
